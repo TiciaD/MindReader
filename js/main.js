@@ -1,5 +1,9 @@
 // set variable for Go button
 const goBtn = document.getElementById("go");
+function go() {
+    // When GO button clicked, state2 function is applied
+    goBtn.addEventListener('click', state2);
+};
 
 // First slide includes text for instructions and a button that says GO
 function state1() {
@@ -7,8 +11,8 @@ function state1() {
     document.getElementById('go').innerHTML = "GO";
     // Hide NEXT button so it can appear on later slides
     document.getElementById("next").style.display = "none";
-    // When GO button clicked, state2 function is applied
-    goBtn.addEventListener('click', state2);
+    document.getElementById('subText').innerHTML = "";
+    go();
 };
 
 // Call state1 to make sure it's the first thing user sees
@@ -17,6 +21,7 @@ state1();
 // declare a reset function to turn GO button into RESET and make it go back to state1
 // HELP: Not working fully, will reset back to state1 but pressing GO again doesn't do anything
 function reset() {
+    goBtn.removeEventListener('click', state2);
     goBtn.addEventListener('click', state1);
 };
 
@@ -25,6 +30,8 @@ function state2() {
     document.getElementById('instructions').innerHTML = "Pick a number from 01 - 99";
     // NEXT button is now unhidden
     document.getElementById("next").style.display = "block";
+    // Make sure text in button says NEXT;
+    document.getElementById('next').innerHTML = "NEXT";
     // Clicking NEXT button will apply state3 function
     next.addEventListener('click', state3);
     // Filled empty <p> tag with text
