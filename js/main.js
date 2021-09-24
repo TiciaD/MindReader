@@ -13,6 +13,10 @@ function state1() {
     document.getElementById("next").style.display = "none";
     document.getElementById('subText').innerHTML = "";
     go();
+    next.removeEventListener('click', state3);
+    next.removeEventListener('click', state4);
+    next.removeEventListener('click', state5);
+    next.removeEventListener('click', state6);
 };
 
 // Call state1 to make sure it's the first thing user sees
