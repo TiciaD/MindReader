@@ -27,6 +27,21 @@
  
 
 ## Define Objects and Functions
+Button
+- goButton ---> takes user to state 2, hides state 1
+- nextButton() ---> takes user from state 2 tostate 3, state 3 to state 4 and state 4 to state 5
+- resetButton ---> when clicked should take user to state 1
+- revealButton ---> takes user from state 5 to state 6
+
+Page
+- text ---> Holds string for header, changes depending on state
+- subText ---> Holds string for subtext under button, changes depending on state
+
+Answer
+- symbols ---> array of symbols to be assigned to 0-3
+- answer ---> symbol assigned to symbols[0]
+- modifyState() ---> accepts Button that was input
+
 State 1: 
 - text ---> Text should say "I can read your mind"
 - goButton ---> GO button should be displayed
@@ -58,3 +73,6 @@ State 5:
 State 6:
 - answer ---> shows symbol assigned to 0
 - subText ---> subText should say "Your symbol is: \n" answer
+
+## Overview
+Scenari
