@@ -29,7 +29,7 @@
 ## Define Objects and Functions
 Button
 - goButton ---> takes user to state 2, hides state 1
-- nextButton() ---> takes user from state 2 tostate 3, state 3 to state 4 and state 4 to state 5
+- nextButton() ---> takes user from state 2 to state 3, state 3 to state 4 and state 4 to state 5
 - resetButton ---> when clicked should take user to state 1
 - revealButton ---> takes user from state 5 to state 6
 
@@ -38,10 +38,11 @@ Page
 - subText ---> Holds string for subtext under button, changes depending on state
 
 Answer
-- symbols ---> array of symbols to be assigned to 0-3
-- answer ---> symbol assigned to symbols[0]
-- modifyState() ---> accepts Button that was input
+- symbols ---> array of symbols
+- randomInt ---> random integer between 0 and symbols length to be assigned to answer
+- answer ---> symbol assigned to symbols[randInt]
 
+### States
 State 1: 
 - text ---> Text should say "I can read your mind"
 - goButton ---> GO button should be displayed
@@ -65,14 +66,49 @@ State 4:
 - resetButton ---> RESET button should be displayed
 
 State 5:
-- symbols ---> show list of numbers 0-3, each assigned to a random symbol
+- symbols ---> show list of numbers 0-3, each assigned to a random symbol from symbols array, 0 should be assigned to answer
 - revealButton ---> REVEAL button should be displayed
 - subText ---> subText should say "Ex: Find your new number\n Note the symbol beside the number"
 - resetButton ---> RESET button should be displayed
 
 State 6:
-- answer ---> shows symbol assigned to 0
+- answer ---> shows symbol assigned to answer
 - subText ---> subText should say "Your symbol is: \n" answer
 
 ## Overview
-Scenari
+```
+START
+
+INIT goButton()
+FUNCTION state1()
+    Pass In: nothing
+    change text, hide NEXT button, allow user to click GO
+    Pass Out: text, goButton()
+CALL: state1()
+
+INIT reset()
+
+FUNCTION state2()
+    Pass In: goButton('click')
+    change text, unhide NEXT button, add subText change text on GO to RESET
+    Pass Out: text, goButton('NEXT'), subText, reset()
+
+FUNCTION state3()
+
+FUNCTION state4()
+
+INIT symbols[]
+INIT randomInt
+INIT answer
+FUNCTION state5(answer)
+    Pass In: answer, goButton('click')
+    change text to include symbols array index and answer at 0, change NEXT to REVEAL, new subText, reset()
+    Pass Out: answer, text, goButton('REVEAL'), subText, reset()
+
+FUNCTION state6(answer)
+    Pass In: answer, goButton('click')
+    DISPLAY answer, hide nextButton, change subText, reset()
+    Pass Out: answer, subtext, reset()
+
+END
+```
